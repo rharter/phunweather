@@ -1,4 +1,4 @@
-package com.ryanharter.phunweather.sdk.model;
+package com.ryanharter.phunweather.sdk.common.model;
 
 import android.os.Parcelable;
 import android.support.annotation.Nullable;

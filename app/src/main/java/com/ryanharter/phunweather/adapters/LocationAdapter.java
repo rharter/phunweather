@@ -8,7 +8,7 @@ import android.widget.TextView;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import com.ryanharter.phunweather.R;
-import com.ryanharter.phunweather.sdk.model.Location;
+import com.ryanharter.phunweather.sdk.common.model.Location;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;

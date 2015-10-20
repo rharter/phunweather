@@ -1,4 +1,4 @@
-package com.ryanharter.phunweather.sdk.internal;
+package com.ryanharter.phunweather.sdk.location.internal;
 
 import com.squareup.moshi.Json;
 import java.util.List;

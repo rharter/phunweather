@@ -3,7 +3,7 @@ package com.ryanharter.phunweather.sdk.weather.internal;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.provider.BaseColumns;
-import com.ryanharter.phunweather.sdk.model.Location;
+import com.ryanharter.phunweather.sdk.common.model.Location;
 
 interface WeatherContract {
 

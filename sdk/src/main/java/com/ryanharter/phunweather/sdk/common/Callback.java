@@ -1,4 +1,4 @@
-package com.ryanharter.phunweather.sdk;
+package com.ryanharter.phunweather.sdk.common;
 
 import android.support.annotation.Nullable;
 

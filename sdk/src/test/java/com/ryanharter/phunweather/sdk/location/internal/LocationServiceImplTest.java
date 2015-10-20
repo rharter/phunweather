@@ -1,8 +1,8 @@
-package com.ryanharter.phunweather.sdk.internal;
+package com.ryanharter.phunweather.sdk.location.internal;
 
 import android.support.annotation.Nullable;
-import com.ryanharter.phunweather.sdk.Callback;
-import com.ryanharter.phunweather.sdk.model.Location;
+import com.ryanharter.phunweather.sdk.common.Callback;
+import com.ryanharter.phunweather.sdk.common.model.Location;
 import java.net.ConnectException;
 import java.util.ArrayList;
 import java.util.Arrays;

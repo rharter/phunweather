@@ -15,7 +15,10 @@
       </intent-filter>
     </activity>
 
-    <activity android:name=".activities.LocationPickerActivity" android:theme="@style/AppTheme.Dialog" />
+    <activity
+        android:name=".activities.LocationPickerActivity"
+        android:label="@string/new_location_title"
+        android:theme="@style/AppTheme.Dialog" />
 
   </application>
 

@@ -53,13 +53,14 @@
     <RelativeLayout
         android:id="@+id/error_container"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         >
 
         <TextView
             android:id="@+id/error_msg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="16dp"
             android:text="@string/error_zip_not_found"/>
 
         <Button

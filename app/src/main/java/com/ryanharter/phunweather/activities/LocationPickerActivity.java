@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
@@ -13,9 +14,9 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.ryanharter.phunweather.PhunweatherApp;
 import com.ryanharter.phunweather.R;
-import com.ryanharter.phunweather.sdk.Callback;
-import com.ryanharter.phunweather.sdk.LocationService;
-import com.ryanharter.phunweather.sdk.model.Location;
+import com.ryanharter.phunweather.sdk.common.Callback;
+import com.ryanharter.phunweather.sdk.common.model.Location;
+import com.ryanharter.phunweather.sdk.location.LocationService;
 import javax.inject.Inject;
 
 /**
@@ -26,6 +27,7 @@ import javax.inject.Inject;
 public class LocationPickerActivity extends AppCompatActivity {
 
   public static final String EXTRA_LOCATION = "location";
+  private static final String TAG = LocationPickerActivity.class.getSimpleName();
 
   @Bind(R.id.search_container) RelativeLayout searchContainer;
   @Bind(R.id.error_container) RelativeLayout errorContainer;
@@ -87,6 +89,7 @@ public class LocationPickerActivity extends AppCompatActivity {
   }
 
   private void onLookupError(Throwable error) {
+    Log.e(TAG, "Failure during location lookup: " + error.getLocalizedMessage(), error);
     showErrorContainer();
   }
 

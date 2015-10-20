@@ -17,8 +17,8 @@ import butterknife.OnClick;
 import com.ryanharter.phunweather.PhunweatherApp;
 import com.ryanharter.phunweather.R;
 import com.ryanharter.phunweather.adapters.LocationAdapter;
-import com.ryanharter.phunweather.sdk.Callback;
-import com.ryanharter.phunweather.sdk.model.Location;
+import com.ryanharter.phunweather.sdk.common.Callback;
+import com.ryanharter.phunweather.sdk.common.model.Location;
 import com.ryanharter.phunweather.sdk.weather.WeatherService;
 import java.util.List;
 import javax.inject.Inject;
@@ -60,6 +60,12 @@ public class LocationListFragment extends Fragment implements LocationAdapter.Li
     list.setLayoutManager(new LinearLayoutManager(getActivity()));
     list.setAdapter(adapter = new LocationAdapter(this));
 
+    if (savedInstanceState == null) {
+      updateLocations();
+    }
+  }
+
+  public void updateLocations() {
     showLoading();
     service.getLocations(new Callback<List<Location>>() {
       @Override public void onResult(@Nullable List<Location> result, @Nullable Throwable error) {

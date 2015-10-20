@@ -1,9 +1,10 @@
-package com.ryanharter.phunweather.sdk;
+package com.ryanharter.phunweather.sdk.location;
 
 import android.support.annotation.NonNull;
-import com.ryanharter.phunweather.sdk.internal.LocationServiceImpl;
-import com.ryanharter.phunweather.sdk.internal.ZipcodeApi;
-import com.ryanharter.phunweather.sdk.model.Location;
+import com.ryanharter.phunweather.sdk.common.Callback;
+import com.ryanharter.phunweather.sdk.common.model.Location;
+import com.ryanharter.phunweather.sdk.location.internal.LocationServiceImpl;
+import com.ryanharter.phunweather.sdk.location.internal.ZipcodeApi;
 import retrofit.MoshiConverterFactory;
 import retrofit.Retrofit;
 

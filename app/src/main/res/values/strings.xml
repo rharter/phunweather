@@ -8,4 +8,8 @@
   <string name="error_incomplete_zip">Zip codes must be 5 numbers.</string>
   <string name="error_zip_not_found">Unknown zip code. Make sure you enter a 5 digit US zip code.</string>
   <string name="button_try_again">Try Again</string>
+  <string name="error">Error</string>
+  <string name="error_forecast_retrieve">There was an error retrieving the forecast.</string>
+  <string name="new_location_title">Add Location</string>
+  <string name="temp">%1$s\u00B0</string>
 </resources>

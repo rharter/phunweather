@@ -1,4 +1,4 @@
-package com.ryanharter.phunweather.sdk.internal;
+package com.ryanharter.phunweather.sdk.location.internal;
 
 import retrofit.Call;
 import retrofit.http.GET;
