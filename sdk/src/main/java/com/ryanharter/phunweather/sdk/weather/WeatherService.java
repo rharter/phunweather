@@ -9,7 +9,7 @@ import com.ryanharter.phunweather.sdk.common.model.Location;
 import com.ryanharter.phunweather.sdk.common.model.WeatherCollection;
 import com.ryanharter.phunweather.sdk.common.model.WeatherData;
 import com.ryanharter.phunweather.sdk.weather.internal.ForecastApi;
-import com.ryanharter.phunweather.sdk.weather.internal.WeatherDatabase;
+import com.ryanharter.phunweather.sdk.weather.internal.WeatherDbOpenHelper;
 import com.ryanharter.phunweather.sdk.weather.internal.WeatherServiceImpl;
 import com.squareup.moshi.Moshi;
 import java.util.List;
@@ -65,7 +65,7 @@ public interface WeatherService {
             .addConverterFactory(MoshiConverterFactory.create(moshi))
             .build();
         ForecastApi api = retrofit.create(ForecastApi.class);
-        service = new WeatherServiceImpl(new WeatherDatabase(context.getApplicationContext()), api);
+        service = new WeatherServiceImpl(new WeatherDbOpenHelper(context.getApplicationContext()), api);
       }
       return service;
     }

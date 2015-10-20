@@ -1,6 +1,7 @@
 package com.ryanharter.phunweather.sdk.weather.internal;
 
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import com.ryanharter.phunweather.sdk.common.Callback;
@@ -21,23 +22,30 @@ import retrofit.Retrofit;
  */
 public class WeatherServiceImpl implements WeatherService {
 
-  private final WeatherDatabase db;
+  private final SQLiteDatabase db;
   private final ForecastApi api;
 
-  public WeatherServiceImpl(WeatherDatabase db, ForecastApi api) {
-    this.db = db;
+  public WeatherServiceImpl(WeatherDbOpenHelper openHelper, ForecastApi api) {
+    this.db = openHelper.getWritableDatabase();
     this.api = api;
   }
 
   @Override public void saveLocation(@NonNull Location location, @Nullable Callback<Location> cb) {
-    long id = db.insertOrUpdate(location);
+    long id;
+    if (location.id() == null) {
+      id = db.insert(Locations.TABLE, null, Locations.toContentValues(location));
+    } else {
+      db.update(Locations.TABLE, Locations.toContentValues(location),
+          Locations._ID + "=?", new String[]{ String.valueOf(location.id()) });
+      id = location.id();
+    }
     if (cb != null) {
       cb.onResult(location.toBuilder().id(id).build(), null);
     }
   }
 
   @Override public void getLocations(@NonNull Callback<List<Location>> cb) {
-    Cursor c = db.listLocations();
+    Cursor c = db.query(Locations.TABLE, null, null, null, null, null, null);
     if (c == null) {
       cb.onResult(new ArrayList<Location>(), null);
       return;

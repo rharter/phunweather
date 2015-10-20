@@ -1,17 +1,16 @@
 package com.ryanharter.phunweather.sdk.weather.internal;
 
 import android.content.Context;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import com.ryanharter.phunweather.sdk.common.model.Location;
-import com.ryanharter.phunweather.sdk.weather.internal.WeatherContract.*;
+import com.ryanharter.phunweather.sdk.weather.internal.WeatherContract.Locations;
 
-public class WeatherDatabase extends SQLiteOpenHelper {
+public class WeatherDbOpenHelper extends SQLiteOpenHelper {
 
   private static final int VERSION = 1;
 
-  public WeatherDatabase(Context context) {
+  public WeatherDbOpenHelper(Context context) {
     super(context, "weather.db", null /* cursorFactory */, VERSION);
   }
 
@@ -53,31 +52,5 @@ public class WeatherDatabase extends SQLiteOpenHelper {
 
   @Override public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
-  }
-
-  @SuppressWarnings("ConstantConditions") public long insertOrUpdate(Location location) {
-    SQLiteDatabase db = getWritableDatabase();
-    try {
-      db.beginTransaction();
-      if (location.id() == null) {
-        return db.insert(Locations.TABLE, null, Locations.toContentValues(location));
-      } else {
-        db.update(Locations.TABLE, Locations.toContentValues(location),
-            Locations._ID + "=?", new String[]{ String.valueOf(location.id()) });
-        return location.id();
-      }
-    } finally {
-      db.endTransaction();
-    }
-  }
-
-  public Cursor listLocations() {
-    SQLiteDatabase db = getReadableDatabase();
-    try {
-      db.beginTransaction();
-      return db.query(Locations.TABLE, null, null, null, null, null, null);
-    } finally {
-      db.endTransaction();
-    }
   }
 }
